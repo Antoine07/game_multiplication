@@ -15,12 +15,14 @@ export const set_choice = (payload) => {
 export const load = () => {
   return {
     type: LOAD_MULTIPLICATIONS,
+    reload : false
   };
 };
 
 export const reload = () => {
   return {
     type: LOAD_MULTIPLICATIONS,
+    reload : true
   };
 };
 

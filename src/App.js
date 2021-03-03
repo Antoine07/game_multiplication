@@ -1,37 +1,54 @@
-
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { load } from './store/actions/actions-types';
+import { load } from "./store/actions/actions-types";
 
-import Form from './components/Form';
-import Info from './components/Info';
+import Container from "./Styles/Container";
+import GlobalStyle from "./Styles/Global";
 
-import Container from './Styles/Container';
-import GlobalStyle from './Styles/Global';
-import Grid from './Styles/Grid';
-import Feedback from './components/Feeback';
+import Home from "./components/Home";
+import Game from "./components/Game";
+import Score from "./components/Score";
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Nav from "./Styles/Nav";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(load()); // load au départ des multiplication
   }, []);
 
   return (
-   <Container>
-     <GlobalStyle />
-     <Grid>
-       <Form />
-     </Grid>
-     <Grid>
-        <Info />
-     </Grid>
-     <Grid>
-       <Feedback />
-     </Grid>
-   </Container>
+    <Router>
+      <GlobalStyle />
+      <Nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/game">Game</Link>
+          </li>
+          <li>
+            <Link to="/score">Score</Link>
+          </li>
+        </ul>
+      </Nav>
+      <Container>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/game">
+            <Game />
+          </Route>
+          <Route path="/score">
+            <Score />
+          </Route>
+        </Switch>
+      </Container>
+    </Router>
   );
 };
 

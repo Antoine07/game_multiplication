@@ -7,6 +7,8 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: .5rem;
+    margin : 0 auto;
+    width: 80%;
 `;
 
 // Container React c'est de la composition => permet de définir une strucrure plus souple pour définir un container

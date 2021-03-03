@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 
 import NumPad from "./NumPad";
@@ -8,7 +6,8 @@ import Box from "../Styles/Box";
 import Button from "../Styles/Button";
 
 import Presentation from "../Styles/Presentation";
-import { clear, go, reload } from "../store/actions/actions-types";
+import { clear, go } from "../store/actions/actions-types";
+import { Redirect } from "react-router-dom";
 
 const Form = () => {
   const { numbers, choice, multiplication, status, message } = useSelector(
@@ -27,14 +26,8 @@ const Form = () => {
   };
 
   if (status === false) {
-    return (
-      <Presentation color="white">
-        Jeu terminé !
-        <Button secondary size="200" onClick={() => dispatch(reload())}>
-          Reload
-        </Button>
-      </Presentation>
-    );
+    
+    return <Redirect to="/score" />;
   }
 
   return (
@@ -46,7 +39,7 @@ const Form = () => {
       )}
 
       {message && <Presentation color="white">{message}</Presentation>}
-      
+
       {numbers.map((lines, i) => (
         <Box key={i}>
           {lines.map((number, i) => (

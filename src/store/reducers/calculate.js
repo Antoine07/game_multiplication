@@ -17,6 +17,7 @@ const stateInit = {
   choice: "", // données saisies de l'utilisateur si 7X3 => il va appuyer sur 2 puis 1
   success: null, // true ou false selon ce qu'aura proposé l'utilisateur
   status: true, // état du jeu
+  reload: false,
   numbers: [[9, 8, 7], [6, 5, 4], [3, 2, 1], [0]],
   number: null,
 };
@@ -33,14 +34,14 @@ const reducer = (state = stateInit, action = {}) => {
         ...state,
         choice: state.choice + choice,
         number: choice,
-        message : '' // on efface le message à chaque fois que l'on re-saisi une valeur
+        message: "", // on efface le message à chaque fois que l'on re-saisi une valeur
       };
 
     // au démarage de l'application
     case LOAD_MULTIPLICATIONS:
       multiplications = generate(2); // calculer toutes les multiplications
       multiplication = multiplications.pop(); // dépile on retire un élément de la pile (tableau)
-      count = multiplications.length;
+      count = multiplications.length + 1;
 
       return {
         ...state,
@@ -48,6 +49,7 @@ const reducer = (state = stateInit, action = {}) => {
         multiplication,
         count,
         status: true,
+        reload: action.reload,
         score: 0,
       };
 
@@ -67,6 +69,16 @@ const reducer = (state = stateInit, action = {}) => {
 
       // assignation par décomposition
       const [n1, n2] = state.multiplication;
+      calcul = n1 * n2; // bon résultat
+
+      // gestion des feebacks
+      if (result === calcul) {
+        message = `Bravo`;
+        score = state.score + 1;
+      } else {
+        message = `Raté la solution : ${n1} X ${n2} = ${calcul}`;
+        score = state.score;
+      }
 
       if (state.multiplications.length === 0) {
         return {
@@ -75,7 +87,8 @@ const reducer = (state = stateInit, action = {}) => {
           multiplications: [],
           count: 0,
           choice: "",
-          status: false,
+          status: false, // le jeu est terminé
+          score
         };
       }
 
@@ -83,21 +96,7 @@ const reducer = (state = stateInit, action = {}) => {
       multiplications = [...state.multiplications];
       multiplication = multiplications.pop();
 
-      console.log("check", multiplications);
-
       count = state.multiplications.length;
-
-      // gestion des feeback
-
-      calcul = n1 * n2; // bon résultat
-
-      if (result === calcul) {
-        message = `Bravo`;
-        score = state.score + 1;
-      } else {
-        message = `Raté la solution : ${n1} X ${n2} = ${calcul}`;
-        score = state.score;
-      }
 
       return {
         ...state,
