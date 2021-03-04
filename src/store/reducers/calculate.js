@@ -88,7 +88,8 @@ const reducer = (state = stateInit, action = {}) => {
           count: 0,
           choice: "",
           status: false, // le jeu est terminé
-          score
+          score,
+          message,
         };
       }
 

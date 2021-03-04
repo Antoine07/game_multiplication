@@ -14,8 +14,14 @@ import configureStore from "./store/createStore";
 const store = configureStore();
 
 // firebase
-export const firebaseConfig = {
-
+const firebaseConfig = {
+  apiKey: "AIzaSyB1XUvnWqPTz7A5SOYC5_vQy8HngZ-lgP4",
+  authDomain: "calculator-9721d.firebaseapp.com",
+  projectId: "calculator-9721d",
+  storageBucket: "calculator-9721d.appspot.com",
+  messagingSenderId: "573067633359",
+  appId: "1:573067633359:web:ae1e845b0240a54d0a0dba",
+  measurementId: "G-2DBYYKB1G9"
 };
 
 firebase.initializeApp(firebaseConfig);

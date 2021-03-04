@@ -11,6 +11,8 @@ import Score from "./components/Score";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Nav from "./Styles/Nav";
+import Feedback from "./components/Feedback";
+import FeedbacksFire from "./components/FeedbacksFire";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +35,12 @@ const App = () => {
           <li>
             <Link to="/score">Score</Link>
           </li>
+          <li>
+            <Link to="/feedback">Feeback</Link>
+          </li>
+          <li>
+            <Link to="/scores">Scores</Link>
+          </li>
         </ul>
       </Nav>
       <Container>
@@ -45,6 +53,12 @@ const App = () => {
           </Route>
           <Route path="/score">
             <Score />
+          </Route>
+          <Route path="/feedback">
+            <Feedback />
+          </Route>
+          <Route path="/scores">
+            <FeedbacksFire />
           </Route>
         </Switch>
       </Container>

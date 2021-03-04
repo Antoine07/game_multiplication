@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import calculate from "./calculate";
-import feeback from "./feeback";
+import feedback from "./feedback";
 
 export default combineReducers({
   calculate,
-  feeback,
+  feedback,
 });
