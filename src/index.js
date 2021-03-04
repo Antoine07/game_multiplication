@@ -6,23 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 
 import firebase from "firebase";
+import { FirebaseDatabaseProvider } from "@react-firebase/database";
 
 // Configuration de store global de l'application
 import configureStore from "./store/createStore";
-
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
 
 const store = configureStore();
 
 // firebase
 export const firebaseConfig = {
-  apiKey: "AIzaSyDFKTjp4zaeBPvi3h_9GL63dyixBHYUACU",
-  authDomain: "app-music-71bd0.firebaseapp.com",
-  databaseURL: "https://app-music-71bd0.firebaseio.com",
-  projectId: "app-music-71bd0",
-  storageBucket: "app-music-71bd0.appspot.com",
-  messagingSenderId: "123652786365",
-  appId: "1:123652786365:web:80c2db7ee4342d6a14cfd4",
+
 };
 
 firebase.initializeApp(firebaseConfig);

@@ -3,6 +3,7 @@ import {
   LOAD_MULTIPLICATIONS,
   CLEAR,
   CHECK_MULTIPLICATION,
+  SET_FEEBACK
 } from "../constants/actions";
 
 export const set_choice = (payload) => {
@@ -37,6 +38,14 @@ export const go = () => {
     type: CHECK_MULTIPLICATION,
   };
 };
+
+// reducer feeback
+export const set_feeback = (payload) => {
+  return {
+    type : SET_FEEBACK,
+    payload
+  }
+}
 
 export const generate = (max_multiplication) => {
   const mult = [];

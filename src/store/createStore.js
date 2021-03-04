@@ -11,7 +11,7 @@ import rootReducer from './reducers';
 const  configureStore = (preloadedState = {}) => {
 
     // vos middleware
-    const middlewares = [ thunkMiddleware];
+    const middlewares = [ thunkMiddleware ];
 
     const middlewareEnhancer = applyMiddleware(...middlewares);
 
